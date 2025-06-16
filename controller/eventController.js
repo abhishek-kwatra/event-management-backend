@@ -36,7 +36,6 @@ export const createEvent = async (req, res) => {
       }
     });
   } catch (error) {
-    console.error('Create event error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };
@@ -58,7 +57,6 @@ export const getEventById = async (req, res) => {
 
     res.status(200).json({ event: events[0] });
   } catch (error) {
-    console.error('Get event error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };
@@ -77,7 +75,7 @@ export const updateEventById = async (req, res) => {
       return res.status(400).json({ message: 'No fields to update' });
     }
 
-    // If event_date or event_time is being updated, validate
+    
     if (fields.event_date || fields.event_time) {
       const [eventResult] = await db.promise().query(
         'SELECT event_date, event_time FROM eventdetails WHERE id = ?',
@@ -112,7 +110,6 @@ export const updateEventById = async (req, res) => {
 
     res.status(200).json({ message: 'Event updated successfully' });
   } catch (error) {
-    console.error('Update event error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };

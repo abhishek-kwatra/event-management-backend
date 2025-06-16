@@ -5,6 +5,8 @@ import cors  from 'cors';
 import bodyParser  from 'body-parser';
 import dotenv  from 'dotenv';
 import loginroutes  from './routes/user.js'
+import eventRoutes from './routes/events.js'; 
+
 
 dotenv.config();
 
@@ -23,6 +25,8 @@ app.get('/', (req, res) => {
 
 // USERS Login
 app.use('/api', loginroutes);
+app.use('/api', eventRoutes);
+
 
 // EVENTS
 // app.use('/api/events', require('./routes/events'));
