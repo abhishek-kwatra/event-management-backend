@@ -1,11 +1,10 @@
 // routes/users.js
+import express from 'express';
+import { registerUser, loginUser } from '../controller/loginController.js';
 
-const express = require('express');
 const router = express.Router();
-const { getAllUsers, createUser } = require('../controllers/userController');
 
-// Routes
-router.get('/', getAllUsers);
-router.post('/', createUser);
+router.post('/register', registerUser);
+router.post('/login', loginUser);
 
-module.exports = router;
+export default router; // ✅ Use ESM export

@@ -1,6 +1,6 @@
 // models/userModel.js
 
-const db = require('./db');
+import  db  from './db.js';
 
 const fetchUsers = (callback) => {
   db.query('SELECT * FROM users', callback);
